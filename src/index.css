@@ -1,0 +1,218 @@
+:root {
+  --bg-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --text-color: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-text: #ffffff;
+  --button-bg: rgba(255, 255, 255, 0.2);
+  --button-text: #ffffff;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --bg-color: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  --text-color: #ecf0f1;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-text: #ecf0f1;
+  --button-bg: rgba(255, 255, 255, 0.2);
+  --button-text: #ecf0f1;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode {
+  --bg-color: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  --text-color: #2d3436;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-text: #2d3436;
+  --button-bg: #fed6e3;
+  --button-text: #2d3436;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.5s ease, color 0.3s ease;
+  min-height: 100vh;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.search-box .MuiButton-root {
+  height: 56px;
+}
+
+@media (min-width: 600px) {
+  .search-box {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .search-box .MuiTextField-root {
+    flex: 1;
+  }
+
+  .search-box .MuiButton-root {
+    width: auto;
+    min-width: 120px;
+    height: 56px;
+    transition: transform 0.2s ease;
+  }
+
+  .search-box .MuiButton-root:hover {
+    transform: scale(1.05);
+  }
+}
+
+.center {
+  min-width: 385px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 1rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.weather-connector {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: cardAppear 0.8s ease-out 0.8s both;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .weather-card {
+    max-width: 90%;
+    border-radius: 15px;
+  }
+
+  .center {
+    min-width: auto;
+  }
+
+  .app {
+    padding: 1rem 0.5rem;
+  }
+}
